@@ -5,6 +5,7 @@ import {
   PROFILE_ERROR,
   UPDATE_PROFILE,
   GET_PROFILES,
+  BASE_URL,
 } from "../constants";
 import axios from "axios";
 import { setAlert } from "./alert";
@@ -12,7 +13,7 @@ import { setAlert } from "./alert";
 // get current user profile
 export const getCurrentUserProfile = () => async (dispatch) => {
   try {
-    const res = await axios.get("http://localhost:5000/api/profile/me");
+    const res = await axios.get(`${BASE_URL}/api/profile/me`);
 
     dispatch({
       type: GET_PROFILE,
@@ -29,7 +30,7 @@ export const getCurrentUserProfile = () => async (dispatch) => {
 // get all user profiles
 export const UserProfiles = () => async (dispatch) => {
   try {
-    const res = await axios.get("http://localhost:5000/api/profile");
+    const res = await axios.get(`${BASE_URL}/api/profile`);
 
     dispatch({
       type: GET_PROFILES,
@@ -47,7 +48,7 @@ export const UserProfiles = () => async (dispatch) => {
 export const UserProfileById = (userId) => async (dispatch) => {
   try {
     const res = await axios.get(
-      `http://localhost:5000/api/profile/user/${userId.id}`
+      `${BASE_URL}/api/profile/user/${userId.id}`
     );
 
     dispatch({
@@ -73,7 +74,7 @@ export const createProfile =
         },
       };
       const res = await axios.post(
-        "http://localhost:5000/api/profile",
+        `${BASE_URL}/api/profile`,
         formData,
         config
       );
@@ -108,7 +109,7 @@ export const addExperience = (formData, navigate) => async (dispatch) => {
       },
     };
     const res = await axios.put(
-      "http://localhost:5000/api/profile/experiences",
+      `${BASE_URL}/api/profile/experiences`,
       formData,
       config
     );
@@ -142,7 +143,7 @@ export const addEducation = (formData, navigate) => async (dispatch) => {
       },
     };
     const res = await axios.put(
-      "http://localhost:5000/api/profile/education",
+      `${BASE_URL}/api/profile/education`,
       formData,
       config
     );
@@ -169,7 +170,7 @@ export const addEducation = (formData, navigate) => async (dispatch) => {
 export const deleteExperience = (id) => async (dispatch) => {
   try {
     const res = await axios.delete(
-      `http://localhost:5000/api/profile/experience/${id}`
+      `${BASE_URL}/api/profile/experience/${id}`
     );
     dispatch({
       type: UPDATE_PROFILE,
@@ -187,7 +188,7 @@ export const deleteExperience = (id) => async (dispatch) => {
 export const deleteEducation = (id) => async (dispatch) => {
   try {
     const res = await axios.delete(
-      `http://localhost:5000/api/profile/education/${id}`
+      `${BASE_URL}/api/profile/education/${id}`
     );
     dispatch({
       type: UPDATE_PROFILE,
@@ -207,7 +208,7 @@ export const deleteEducation = (id) => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm("Are you sure?")) {
     try {
-      await axios.delete(`http://localhost:5000/api/profile`);
+      await axios.delete(`${BASE_URL}/api/profile`);
       dispatch({
         type: CLEAR_PROFILE,
       });

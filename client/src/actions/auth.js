@@ -9,6 +9,7 @@ import {
   REGISTER_FAIL,
   REGISTER_SUCCESS,
   USER_LOADED,
+  BASE_URL,
 } from "../constants";
 import setAuthToken from "../utills/setAuthToken";
 import { setAlert } from "./alert";
@@ -16,7 +17,7 @@ import { setAlert } from "./alert";
 export const loadUser = () => async (dispatch) => {
   if (localStorage.token) setAuthToken(localStorage.token);
   try {
-    const res = await axios.get("http://localhost:5000/api/auth");
+    const res = await axios.get(`${BASE_URL}/api/auth`);
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -39,7 +40,7 @@ export const register =
     const body = JSON.stringify({ name, email, password });
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/users",
+        `${BASE_URL}/api/users`,
         body,
         config
       );
@@ -70,7 +71,7 @@ export const login =
     const body = JSON.stringify({ email, password });
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth",
+        `${BASE_URL}/api/auth`,
         body,
         config
       );

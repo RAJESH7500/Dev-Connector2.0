@@ -9,8 +9,8 @@ import PropTypes from "prop-types";
 const Login = ({ login, auth }) => {
   const naviget = useNavigate();
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: "test@gmail.com",
+    password: "Test@123",
   });
   const { email, password } = formData;
   const onchange = (e) => {
