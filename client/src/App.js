@@ -23,6 +23,7 @@ import EditProfile from "./components/post&orofiles/EditProfile";
 
 if (localStorage.token) setAuthToken(localStorage.token);
 const App = () => {
+  console.log('value')
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
