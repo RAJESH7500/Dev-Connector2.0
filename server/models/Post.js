@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const PostSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "users",
+    ref: 'users',
   },
   text: {
     type: String,
@@ -19,7 +19,7 @@ const PostSchema = mongoose.Schema({
     {
       user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "users",
+        ref: 'users',
       },
     },
   ],
@@ -27,7 +27,7 @@ const PostSchema = mongoose.Schema({
     {
       user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "users",
+        ref: 'users',
       },
       text: {
         type: String,
@@ -51,4 +51,5 @@ const PostSchema = mongoose.Schema({
   },
 });
 
-module.exports = Post = mongoose.model("post", PostSchema);
+const Post = mongoose.model('post', PostSchema);
+module.exports = Post;
